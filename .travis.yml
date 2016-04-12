@@ -4,9 +4,15 @@ node_js: '5'
 addons:
   postgresql: '9.4'
 before_script:
-  - bash install.sh
+- bash install.sh
 script:
-  - source env.sh && npm run test
-
+- source env.sh && npm run test
 notifications:
   slack: devops-training-spb:H1eeLPE4mcpnrFgBfZTBtSPT
+deploy:
+  provider: heroku
+  api_key:
+    secure: jSjvk+jco76/txK8rB/LMEXPHYIBW88DYc9bLv8eKlM/mSBKKGsHE1kQvMOpAzW553fFbDaCWdjTcJy4l+hXB8GvMEESPdp2/X+xBWn5HgHgOzLxN5NoDsQ0ag+V6fvHLvHtGkYoptYBgNDG74EM0obsWNnU8YURv/we7wxyNXonZ1vRjgdSVycytWKihx+ojTzkN0rg8yx+9eh+M1QZDceoiXKdW6xB+QLfml+y4qapEMp9OxtWymbpvCF+jQuKdnJZQEkI69YJC+hjUU9Ue6NOV+OQgN0Vx2AgkUcBjW682NLwk5kFlE4gzslYkmB0jH43Napcb9u/7zGdCsi3Wp8IN7szU+73zDQJDNP1O4BYIa+7AP0upWUtkhLLbEmU3BY4FW8KpYmBsw8hJdf6EweQXFhBKPaaOycHTeDznKHv+H83V1mYFcRzHxnXyRKeF/1y+uZaq2Hx11zbZpTGllsXL7hhMfMRkO15uqtncmwB5K4tFeM0/iC+oUAD16PGCEYB5C78AjiGA6AQ+FnAprU+vDKmebECGZeMmXvvUz/VC37zGj5HPI8XB4Zbep6hfJu/tcFM3pi514O0M9wvTO0jdXhKfvlFCbB1uIlabihREtxS0YxbACl7ufb978FnGnduzahc8bg8KyCJQEwR+lAtcXQWXn1ga5Wuu94Akzc=
+  app: dry-forest-18975
+  on:
+    repo: vasilevichra/delivery-pipeline-training
