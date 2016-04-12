@@ -4,3 +4,10 @@ services:
 language: node_js
 node_js:
   - "5"
+
+before_script:
+  - psql -c 'CREATE USER crudtest WITH PASSWORD crudtest;'
+  - psql -c 'CREATE DATABASE crudtest WITH OWNER crudtest;'
+
+notifications:
+  slack: devops-training-spb:H1eeLPE4mcpnrFgBfZTBtSPT
