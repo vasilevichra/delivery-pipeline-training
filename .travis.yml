@@ -1,13 +1,12 @@
-services:
-  - postgresql
-
+sudo: false
 language: node_js
-node_js:
-  - "5"
-
+node_js: '5'
+addons:
+postgresql: '9.4'
 before_script:
-  - psql postgres -c 'CREATE USER crudtest WITH PASSWORD 'crudtest';'
-  - psql postgres -c 'CREATE DATABASE crudtest WITH OWNER crudtest;'
+- bash install.sh
+script:
+- source env.sh && npm run test
 
 notifications:
   slack: devops-training-spb:H1eeLPE4mcpnrFgBfZTBtSPT
